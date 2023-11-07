@@ -3,6 +3,7 @@ Provides template code to automatically make decisions for the autonomous
 car.
 '''
 from scenario import Scenario
+from scenario import Person
 
 def decide(scenario):
     """ Decides whether your car will save the passengers or pedestrians
@@ -32,7 +33,15 @@ def decide(scenario):
     # Your program must choose to save either pedestrians or passengers.
     # This is an overly simple rule that only saves the passengers if there are
     # more passengers than pedestrians.
-
+    
+    
+    # TODO: Choose to save the human(s) over the animal(s)
+    if Person.CHAR_TYPES == "animal":
+        return "pedestrians"
+    else:
+        return "passengers"
+    
+    # This was a default case provided by the professor
     if len(scenario.passengers) > len(scenario.pedestrians):
         return "passengers"
     else:
