@@ -34,12 +34,29 @@ def decide(scenario):
     # This is an overly simple rule that only saves the passengers if there are
     # more passengers than pedestrians.
     
+    # CHAR_TYPES: Human = 1, Animal = 0
     
-    # TODO: YOUR CODE HERE
+    # ANIMAL_TYPES: Cat = 0, Dog = 0
+    
+    # AGE_TYPES: Child = 4, Baby = 3, Adult = 2, Eldery = 1
+    
+    # PROF_TYPES: Docter = 5, CEO = 4, Unemployed = 3, Unkown = 2, Homeless = 1, Criminal = 0
+    
+    # GENDER_TYPES: Female = 2, Male = 1
+    
+    # PREGNANT_CHANCE: True = 1, False = 0
+    
+    # BODYWEIGHT_CHANCE: Average = 2, Athletic = 2, Overweight = 1
+    
+    
+    #TODO: #1 Implement the logic using the info stated above. Be sure to add a default case for when the scores are equal.
+    #TODO: #2 Explain why you programed the algorithm in this way, why did you decided to give the scores that you did.
+    
+    # initialize the scores
     passScore = 0
-    pedScore = 0
+    pedScore = 0 
     
-    # loop through each person in the scenario and increment the score based on the scenario / Maybe add and else that affects the score? 
+    # loop through each person in the scenario and increment the score based on the scenario info 
     for person in scenario.passengers:
         if person.charType == "human":
             passScore += 1
