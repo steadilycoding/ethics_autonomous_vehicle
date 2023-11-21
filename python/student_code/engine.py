@@ -35,15 +35,47 @@ def decide(scenario):
     # more passengers than pedestrians.
     
     
-    # TODO: Choose to save the human(s) over the animal(s)
-    if Person.CHAR_TYPES == "animal":
-        return "pedestrians"
-    else:
+    # TODO: YOUR CODE HERE
+    passScore = 0
+    pedScore = 0
+    
+    # loop through each person in the scenario and increment the score based on the scenario / Maybe add and else that affects the score? 
+    for person in scenario.passengers:
+        if person.charType == "human":
+            passScore += 1
+        elif person.age == "baby" or person.age == "child" or person.age == "adult":
+            passScore += 1
+        elif person.profession == "doctor" or person.profession == "CEO":
+            passScore += 1
+        elif person.bodyType == "athletic":
+            passScore += 1
+        elif person.pregnant:
+            passScore += 1
+    
+    for person in scenario.pedestrians:
+        if person.charType == "human":
+            pedScore += 1
+        elif person.age == "baby" or person.age == "child" or person.age == "adult":
+            pedScore += 1
+        elif person.profession == "doctor" or person.profession == "CEO":
+            pedScore += 1
+        elif person.bodyType == "athletic":
+            pedScore += 1
+        elif person.pregnant:
+            pedScore += 1
+            
+    if passScore > pedScore:
+        print(passScore)
+        print(pedScore)
         return "passengers"
+    else:
+        print(passScore)
+        print(pedScore)
+        return "pedestrians"
     
     # This was a default case provided by the professor
-    if len(scenario.passengers) > len(scenario.pedestrians):
-        return "passengers"
-    else:
-        return "pedestrians"
+    #if len(scenario.passengers) > len(scenario.pedestrians):
+     #   return "passengers"
+    #else:
+     #   return "pedestrians"
     
