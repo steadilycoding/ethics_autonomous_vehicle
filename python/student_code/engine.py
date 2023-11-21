@@ -34,6 +34,12 @@ def decide(scenario):
     # This is an overly simple rule that only saves the passengers if there are
     # more passengers than pedestrians.
     
+    # ~~~ SCORING TABLE ~~~
+    #TODO: Implement Scores for: 
+    # 1) Legal Crossing 
+    # 2) Peds in lane
+    # 3) You in car
+    
     # CHAR_TYPES: Human = 1, Animal = 0
     
     # ANIMAL_TYPES: Cat = 0, Dog = 0
@@ -49,8 +55,8 @@ def decide(scenario):
     # BODYWEIGHT_CHANCE: Average = 2, Athletic = 2, Overweight = 1
     
     
-    #TODO: #1 Implement the logic using the info stated above. Be sure to add a default case for when the scores are equal.
-    #TODO: #2 Explain why you programed the algorithm in this way, why did you decided to give the scores that you did.
+    #TODO: 1) Implement the logic using the info stated above. Be sure to add a default case for when the scores are equal.
+    #TODO: 2) Explain why you programed the algorithm in this way, why did you decided to give the scores that you did.
     
     # initialize the scores
     passScore = 0
