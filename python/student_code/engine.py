@@ -40,11 +40,11 @@ def decide(scenario):
     # 2) Peds in lane
     # 3) You in car
     
-    # CHAR_TYPES: Human = 1, Animal = 0
+    # CHAR_TYPES: Human = 1, Animal = 0 / Animals should not be given a higher priority than Human
     
     # ANIMAL_TYPES: Cat = 0, Dog = 0
     
-    # AGE_TYPES: Child = 4, Baby = 3, Adult = 2, Eldery = 1
+    # AGE_TYPES: Child = 4, Baby = 3, Adult = 2, Eldery = 1 / 
     
     # PROF_TYPES: Docter = 5, CEO = 4, Unemployed = 3, Unkown = 2, Homeless = 1, Criminal = 0
     
@@ -66,35 +66,101 @@ def decide(scenario):
     for person in scenario.passengers:
         if person.charType == "human":
             passScore += 1
-        elif person.age == "baby" or person.age == "child" or person.age == "adult":
+        elif person.charType == "animal":
+            passScore += 0
+            
+        if person.age == "child":
+            passScore += 4
+        elif person.age == "baby":
+            passScore += 3
+        elif person.age == "adult":
+            passScore += 2
+        elif person.age == "elderly":
             passScore += 1
-        elif person.profession == "doctor" or person.profession == "CEO":
+            
+        if person.profession == "doctor":
+            passScore += 5
+        elif person.profession == "CEO":
+            passScore += 4
+        elif person.profession == "unemployed":
+            passScore += 3
+        elif person.profession == "Unkown":
+            passScore += 2
+        elif person.profession == "homeless":
             passScore += 1
+        elif person.profession == "criminal":
+            passScore += 0    
+    
+        if person.gender == "female":
+            passScore += 2
+        elif person.gender == "male":
+            passScore += 1    
+    
+        if person.pregnant:
+            passScore += 1
+            
+        if person.bodyType == "average":
+            passScore += 2
         elif person.bodyType == "athletic":
-            passScore += 1
-        elif person.pregnant:
+            passScore += 2
+        elif person.bodyType == "overweight":
             passScore += 1
     
     for person in scenario.pedestrians:
         if person.charType == "human":
-            pedScore += 1
-        elif person.age == "baby" or person.age == "child" or person.age == "adult":
-            pedScore += 1
-        elif person.profession == "doctor" or person.profession == "CEO":
-            pedScore += 1
+            passScore += 1
+        elif person.charType == "animal":
+            passScore += 0
+            
+        if person.age == "child":
+            passScore += 4
+        elif person.age == "baby":
+            passScore += 3
+        elif person.age == "adult":
+            passScore += 2
+        elif person.age == "elderly":
+            passScore += 1
+            
+        if person.profession == "doctor":
+            passScore += 5
+        elif person.profession == "CEO":
+            passScore += 4
+        elif person.profession == "unemployed":
+            passScore += 3
+        elif person.profession == "Unkown":
+            passScore += 2
+        elif person.profession == "homeless":
+            passScore += 1
+        elif person.profession == "criminal":
+            passScore += 0    
+    
+        if person.gender == "female":
+            passScore += 2
+        elif person.gender == "male":
+            passScore += 1    
+    
+        if person.pregnant:
+            passScore += 1
+            
+        if person.bodyType == "average":
+            passScore += 2
         elif person.bodyType == "athletic":
-            pedScore += 1
-        elif person.pregnant:
-            pedScore += 1
+            passScore += 2
+        elif person.bodyType == "overweight":
+            passScore += 1
             
     if passScore > pedScore:
         print(passScore)
         print(pedScore)
         return "passengers"
-    else:
+    elif passScore < pedScore:
         print(passScore)
         print(pedScore)
         return "pedestrians"
+    else:
+        print(passScore)
+        print(pedScore)
+        return "pedestrians" # Because the pedestrians didnt decide to get in the vehicle
     
     # This was a default case provided by the professor
     #if len(scenario.passengers) > len(scenario.pedestrians):
